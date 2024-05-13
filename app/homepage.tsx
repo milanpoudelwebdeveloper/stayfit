@@ -3,6 +3,8 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import ImageSlider from "@/components/ImageSlider";
+import BodyParts from "@/components/BodyParts";
 
 const HomePage = () => {
   return (
@@ -37,6 +39,10 @@ const HomePage = () => {
             className="rounded-full"
           />
         </View>
+      </View>
+      <ImageSlider />
+      <View className="flex-1">
+        <BodyParts />
       </View>
     </SafeAreaView>
   );
