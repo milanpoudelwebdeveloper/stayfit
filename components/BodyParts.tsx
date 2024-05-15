@@ -6,13 +6,15 @@ import {
 } from "react-native-responsive-screen";
 import { bodyParts } from "@/constants/index";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
 
 interface IItem {
   name: string;
   image: any;
 }
 
-const BodyPartCard = ({ name, image }: IItem) => {
+const BodyPartCard = (item: IItem) => {
+  const router = useRouter();
   return (
     <View>
       <TouchableOpacity
@@ -21,9 +23,18 @@ const BodyPartCard = ({ name, image }: IItem) => {
           height: widthPercentageToDP(52),
         }}
         className="flex justify-end p-4 mb-4"
+        onPress={() =>
+          router.push({
+            pathname: "exercises",
+            params: {
+              name: item?.name,
+              image: item?.image,
+            },
+          })
+        }
       >
         <Image
-          source={image}
+          source={item?.image}
           resizeMode="cover"
           style={{
             width: widthPercentageToDP(44),
@@ -47,7 +58,7 @@ const BodyPartCard = ({ name, image }: IItem) => {
           }}
           className="text-lg font-semibold tracking-wide text-center text-white"
         >
-          {name}
+          {item?.name}
         </Text>
       </TouchableOpacity>
     </View>
