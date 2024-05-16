@@ -7,6 +7,7 @@
       "@/components": ["./components/*"],
       "@/assets": ["./assets/*"],
       "@/constants": ["./constants/*"],
+      "@/api": ["./api/*"],
       "@/*": ["./*"]
     }
   },
