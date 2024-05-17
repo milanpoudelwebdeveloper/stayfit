@@ -13,7 +13,7 @@ interface IItem {
   image: any;
 }
 
-const BodyPartCard = (item: IItem) => {
+export const BodyPartCard = (item: IItem) => {
   const router = useRouter();
   return (
     <View>
