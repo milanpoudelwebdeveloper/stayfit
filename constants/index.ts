@@ -1,10 +1,8 @@
 export const sliderImages = [
-  require("../assets/images/cover.webp"),
-  require("../assets/images/back.webp"),
-  require("../assets/images/cardio.webp"),
-  require("../assets/images/chest.webp"),
-  require("../assets/images/lowerarm.webp"),
-  require("../assets/images/neck.webp"),
+  require("../assets/images/1.webp"),
+  require("../assets/images/2.webp"),
+  require("../assets/images/3.webp"),
+  require("../assets/images/4.webp"),
 ];
 
 export const bodyParts = [
@@ -14,8 +12,7 @@ export const bodyParts = [
   { name: "lower arms", image: require("../assets/images/lowerarm.webp") },
   { name: "lower legs", image: require("../assets/images/lowerlegs.webp") },
   { name: "neck", image: require("../assets/images/neck.webp") },
-  { name: "shoulders", image: require("../assets/images/back.webp") },
-  { name: "upper arms", image: require("../assets/images/cover.webp") },
-  { name: "upper legs", image: require("../assets/images/back.webp") },
-  { name: "waist", image: require("../assets/images/cover.webp") },
+  { name: "shoulders", image: require("../assets/images/shoulder.webp") },
+  { name: "upper arms", image: require("../assets/images/upperarm.webp") },
+  { name: "upper legs", image: require("../assets/images/lowerlegs.webp") },
 ];

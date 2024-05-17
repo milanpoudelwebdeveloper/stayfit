@@ -7,16 +7,21 @@ import {
 import { bodyParts } from "@/constants/index";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
-interface IItem {
-  name: string;
-  image: any;
+interface Props {
+  item: { name: string; image: any };
+  index: number;
 }
 
-export const BodyPartCard = (item: IItem) => {
+export const BodyPartCard = ({ item, index }: Props) => {
   const router = useRouter();
   return (
-    <View>
+    <Animated.View
+      entering={FadeInDown.duration(400)
+        .delay(index * 200)
+        .springify()}
+    >
       <TouchableOpacity
         style={{
           width: widthPercentageToDP(44),
@@ -61,7 +66,7 @@ export const BodyPartCard = (item: IItem) => {
           {item?.name}
         </Text>
       </TouchableOpacity>
-    </View>
+    </Animated.View>
   );
 };
 
@@ -89,7 +94,7 @@ const BodyParts = () => {
           justifyContent: "space-between",
         }}
         renderItem={({ item, index }) => (
-          <BodyPartCard key={index} name={item?.name} image={item?.image} />
+          <BodyPartCard key={index} item={item} index={index} />
         )}
       />
     </View>

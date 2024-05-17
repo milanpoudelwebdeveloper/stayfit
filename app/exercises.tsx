@@ -1,5 +1,5 @@
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import React, { useEffect } from "react";
+
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { getExercisesByBodyPart } from "@/api/exerciseDB";
@@ -7,6 +7,7 @@ import { StatusBar } from "expo-status-bar";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
+  heightPercentageToDP,
 } from "react-native-responsive-screen";
 import { Ionicons } from "@expo/vector-icons";
 import ExerciseLists from "@/components/ExerciseLists";
@@ -14,13 +15,14 @@ import ExerciseLists from "@/components/ExerciseLists";
 const exercises = () => {
   const router = useRouter();
   const item = useLocalSearchParams();
+
   const { data } = useQuery({
     queryKey: ["exercises", item],
     queryFn: () => getExercisesByBodyPart(item?.name as string),
     enabled: !!item,
+    staleTime: Infinity,
   });
 
-  console.log("here data coming is", data);
   return (
     <ScrollView>
       <StatusBar style="light" />
@@ -41,7 +43,14 @@ const exercises = () => {
         <Ionicons name="caret-back-outline" size={hp(3)} color="white" />
       </TouchableOpacity>
       <View className="mx-4 mt-4 space-y-3">
-        <Text>{item?.name} exercises</Text>
+        <Text
+          style={{
+            fontSize: heightPercentageToDP(3),
+          }}
+          className="font-semibold uppercase text-neutral-700"
+        >
+          {item?.name} exercises
+        </Text>
         <View className="mb-10">
           <ExerciseLists data={data} />
         </View>
